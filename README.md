@@ -27,7 +27,7 @@ curl \
 
 ### Generate status
 
-> Note: Must be used only during development. In production, you must utilize webhook to receive completion callback.
+> Note: Generate status endpoint must be used only during development. In production, you must implement webhook to receive generate completion callback.
 
 Check status for generate requests and download generated file
 ```bash
@@ -38,7 +38,7 @@ curl \
   -X GET https://api.fliki.ai/v1/generate/status
 ```
 
-- Returns status and download URL.
+- Returns status (`processing` | `success` | `error`) and download URL.
 - Warning: you must implement [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) when checking for status otherwise it'll lead to rate limit error and all consecutive API calls will fail.
 
 ## Note

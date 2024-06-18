@@ -5,18 +5,18 @@ const API_KEY = '<YOUR_API_KEY>' // Get your API key here: https://app.fliki.ai/
 const API_URL = 'https://api.fliki.ai/v1'
 
 // generate template
-if (false) {
+if (true) {
   // Data input
   const input = {
     fileId: '...',
-    webhook: 'https://...',
+    webhook: 'https://example.com/webhook',
     scenes: [
       {
         key: 'intro',
         layers: [
           {
             key: 'voiceover',
-            text: 'Welcome to the video!',
+            text: 'Welcome to the video.',
           },
         ],
       },
@@ -37,30 +37,30 @@ if (false) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer <API KEY>',
+      Authorization: `Bearer ${API_KEY}`,
     },
     body: JSON.stringify(input),
   })
 
-  console.log(response) // { success: true, data: { fileId: "123" } }
+  console.log(await response.json()) // { fileId: "..." }
 }
 
 // generate status
-if (false) {
+if (true) {
   // Data input
-  const input = {
+  const input = new URLSearchParams({
     fileId: '...',
-  }
+  })
 
   // API endpoint
-  const response = await fetch(`${API_URL}/generate/status`, {
+  const response = await fetch(`${API_URL}/generate/status?${input}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer <API KEY>',
+      Authorization: `Bearer ${API_KEY}`,
     },
     params: input,
   })
 
-  console.log(response) // { success: true, data: { fileId: "123", file: "https://..." } }
+  console.log(await response.json()) // { fileId: "...", status: '...', download: "https://..." }
 }
