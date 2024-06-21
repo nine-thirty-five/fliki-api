@@ -46,6 +46,9 @@ curl \
 - The file generated are hosted on Fliki's storage server and is deleted automatically after three hours. We expect you to copy it to your own storage server for long term availability.
 - The API service is in early access only. The endpoints and other workings of API is subjected to change without notice.
 
+## Samples
+- [NodeJS](./samples/node)
+
 ## Contact
 Share your feedback, feature requests and bug reports via email [support@fliki.ai](mailto:support@fliki.ai) or via live chat available on [app.fliki.ai](https://app.fliki.ai).
 
