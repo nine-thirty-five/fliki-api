@@ -38,7 +38,7 @@ curl \
   -X GET https://api.fliki.ai/v1/generate/status
 ```
 
-- Returns status (`processing` | `success` | `error`) and download URL.
+- Returns status (`queued` | `processing` | `success` | `error`) and download URL.
 - Warning: you must implement [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) when checking for status otherwise it'll lead to rate limit error and all consecutive API calls will fail.
 
 ## Note
