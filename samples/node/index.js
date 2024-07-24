@@ -4,11 +4,12 @@ const API_KEY = '<YOUR_API_KEY>' // Get your API key here: https://app.fliki.ai/
 // API URL
 const API_URL = 'https://api.fliki.ai/v1'
 
-// generate template
+// generate (using template)
 if (true) {
   // Data input
   const input = {
     fileId: '...',
+    name: 'provide a file name or leave blank to auto-generate',
     webhook: 'https://example.com/webhook',
     scenes: [
       {
@@ -16,7 +17,37 @@ if (true) {
         layers: [
           {
             key: 'voiceover',
-            text: 'Welcome to the video.',
+            text: 'This is intro scene.',
+          },
+          {
+            key: 'text',
+            text: 'Intro',
+          },
+        ],
+      },
+      {
+        key: 'body',
+        layers: [
+          {
+            key: 'voiceover',
+            text: 'This is body scene one.',
+          },
+          {
+            key: 'text',
+            text: 'One',
+          },
+        ],
+      },
+      {
+        key: 'body',
+        layers: [
+          {
+            key: 'voiceover',
+            text: 'This is body scene two.',
+          },
+          {
+            key: 'text',
+            text: 'Two',
           },
         ],
       },
@@ -25,7 +56,11 @@ if (true) {
         layers: [
           {
             key: 'voiceover',
-            text: 'Thanks for watching.',
+            text: 'This is outro scene.',
+          },
+          {
+            key: 'text',
+            text: 'Outro',
           },
         ],
       },
@@ -64,3 +99,24 @@ if (false) {
 
   console.log(await response.json()) // { fileId: "...", status: '...', download: "https://..." }
 }
+
+// delete file
+if (false) {
+  // Data input
+  const input = {
+    fileId: '...',
+  }
+
+  // API endpoint
+  const response = await fetch(`${API_URL}/file/delete`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${API_KEY}`,
+    },
+    body: JSON.stringify(input),
+  })
+
+  console.log(await response.json())
+}
+

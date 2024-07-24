@@ -18,7 +18,7 @@ Generate using file marked as template.
 curl \
   -H "Authorization: Bearer <API KEY>" \
   -H "Content-Type: application/json" \
-  -d '{"fileId": "...", "webhook": "https://...", "scenes": [...]}' \
+  -d '{"fileId": "...", name: "...", "webhook": "https://...", "scenes": [...]}' \
   -X POST https://api.fliki.ai/v1/generate/template
 ```
 
@@ -40,6 +40,18 @@ curl \
 
 - Returns status (`processing` | `success` | `error`) and download URL.
 - Warning: you must implement [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) when checking for status otherwise it'll lead to rate limit error and all consecutive API calls will fail.
+
+### Delete file
+
+Delete a file from drive.
+
+```bash
+curl \
+  -H "Authorization: Bearer <API KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{"fileId"}' \
+  -X POST https://api.fliki.ai/v1/file/delete
+```
 
 ## Note
 - Input data field `text` across all applicable endpoint is limited to 1500 characters.
