@@ -38,7 +38,7 @@ curl \
   -X GET https://api.fliki.ai/v1/generate/status
 ```
 
-- Returns status (`processing` | `success` | `error`) and download URL.
+- Returns status (`queued` | `processing` | `success` | `error`) and download URL.
 - Warning: you must implement [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) when checking for status otherwise it'll lead to rate limit error and all consecutive API calls will fail.
 
 ### Delete file
@@ -57,6 +57,9 @@ curl \
 - Input data field `text` across all applicable endpoint is limited to 1500 characters.
 - The file generated are hosted on Fliki's storage server and is deleted automatically after three hours. We expect you to copy it to your own storage server for long term availability.
 - The API service is in early access only. The endpoints and other workings of API is subjected to change without notice.
+
+## Samples
+- [NodeJS](./samples/node)
 
 ## Contact
 Share your feedback, feature requests and bug reports via email [support@fliki.ai](mailto:support@fliki.ai) or via live chat available on [app.fliki.ai](https://app.fliki.ai).
